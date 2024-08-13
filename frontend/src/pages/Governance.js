@@ -7,24 +7,41 @@ const Governance = () => {
   useEffect(() => {
     fetch("/api/governance")
       .then((res) => res.json())
-      .then((data) => setProposals(data));
+      .then((data) => setProposals(data))
+      .catch((err) => console.error(err));
   }, []);
 
-  const voteFor = async (proposalId) => {
-    await fetch(`/api/governance/vote-for/${proposalId}`, { method: "POST" });
-    // Handle updating the UI after voting
+  const voteFor = (proposalId) => {
+    fetch(`/api/governance/vote/${proposalId}`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ support: true }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("Voted for:", data))
+      .catch((err) => console.error(err));
   };
 
-  const voteAgainst = async (proposalId) => {
-    await fetch(`/api/governance/vote-against/${proposalId}`, {
+  const voteAgainst = (proposalId) => {
+    fetch(`/api/governance/vote/${proposalId}`, {
       method: "POST",
-    });
-    // Handle updating the UI after voting
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ support: false }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("Voted against:", data))
+      .catch((err) => console.error(err));
   };
 
   return (
     <div className="container mx-auto mt-8">
-      <h1 className="text-2xl font-bold mb-4">Governance</h1>
+      <h1 className="text-3xl font-bold mb-4">Governance</h1>
       {proposals.map((proposal) => (
         <VotingInterface
           key={proposal._id}

@@ -12,7 +12,9 @@
     "react-router-dom": "^6.26.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
-    "web3": "^4.11.1"
+    "web3": "^4.11.1",
+    "@rainbow-me/rainbowkit": "2.0.0",
+    "wagmi": "2.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
