@@ -1,12 +1,18 @@
 const express = require("express");
 const {
   createContent,
-  getContents,
+  getAllContent,
+  getContentById,
 } = require("../controllers/contentController");
-const auth = require("../middleware/auth");
 const router = express.Router();
 
-router.post("/", auth, createContent);
-router.get("/", getContents);
+// Create new content
+router.post("/create", createContent);
+
+// Get all content
+router.get("/", getAllContent);
+
+// Get content by ID
+router.get("/:id", getContentById);
 
 module.exports = router;
