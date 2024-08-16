@@ -1,12 +1,18 @@
 const express = require("express");
 const {
   createProposal,
+  voteOnProposal,
   getProposals,
 } = require("../controllers/governanceController");
-const auth = require("../middleware/auth");
 const router = express.Router();
 
-router.post("/", auth, createProposal);
+// Create a new proposal
+router.post("/create", createProposal);
+
+// Vote on a proposal
+router.post("/vote/:proposalId", voteOnProposal);
+
+// Get all proposals
 router.get("/", getProposals);
 
 module.exports = router;
