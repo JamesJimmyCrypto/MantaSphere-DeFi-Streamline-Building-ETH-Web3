@@ -1,12 +1,18 @@
 const express = require("express");
 const {
-  getTransactions,
   createTransaction,
+  getTransactionById,
+  getUserTransactions,
 } = require("../controllers/transactionController");
-const auth = require("../middleware/auth");
 const router = express.Router();
 
-router.get("/", auth, getTransactions);
-router.post("/", auth, createTransaction);
+// Create a new transaction
+router.post("/create", createTransaction);
+
+// Get a transaction by ID
+router.get("/:id", getTransactionById);
+
+// Get all transactions for a user
+router.get("/user/:userId", getUserTransactions);
 
 module.exports = router;
