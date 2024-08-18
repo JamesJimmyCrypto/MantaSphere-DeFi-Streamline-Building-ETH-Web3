@@ -1,29 +1,39 @@
 const Content = require("../models/Content");
 
 exports.createContent = async (req, res) => {
-  const { title, description, mediaHash } = req.body;
-  const userId = req.user.id;
-
   try {
+    const { title, description, contentURL } = req.body;
     const content = new Content({
       title,
       description,
-      mediaHash,
-      owner: userId,
+      contentURL,
+      creator: req.user.id,
     });
-
     await content.save();
-    res.status(201).json(content);
-  } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(201).json({ message: "Content created successfully", content });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
 
-exports.getContents = async (req, res) => {
+exports.getAllContent = async (req, res) => {
   try {
-    const contents = await Content.find().populate("owner", "username");
-    res.json(contents);
-  } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    const content = await Content.find().populate("creator", "username");
+    res.status(200).json(content);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.getContentById = async (req, res) => {
+  try {
+    const content = await Content.findById(req.params.id).populate(
+      "creator",
+      "username"
+    );
+    if (!content) return res.status(404).json({ message: "Content not found" });
+    res.status(200).json(content);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
