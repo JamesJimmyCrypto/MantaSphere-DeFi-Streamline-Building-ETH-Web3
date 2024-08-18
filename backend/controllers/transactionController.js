@@ -1,28 +1,39 @@
 const Transaction = require("../models/Transaction");
 
-exports.getTransactions = async (req, res) => {
+exports.createTransaction = async (req, res) => {
   try {
-    const transactions = await Transaction.find().populate("user", "username");
-    res.json(transactions);
-  } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    const { from, to, amount, transactionHash } = req.body;
+    const transaction = new Transaction({ from, to, amount, transactionHash });
+    await transaction.save();
+    res
+      .status(201)
+      .json({ message: "Transaction recorded successfully", transaction });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
 
-exports.createTransaction = async (req, res) => {
-  const { amount, type } = req.body;
-  const userId = req.user.id;
-
+exports.getTransactionById = async (req, res) => {
   try {
-    const transaction = new Transaction({
-      amount,
-      type,
-      user: userId,
-    });
+    const transaction = await Transaction.findById(req.params.id).populate(
+      "from to",
+      "username"
+    );
+    if (!transaction)
+      return res.status(404).json({ message: "Transaction not found" });
+    res.status(200).json(transaction);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
-    await transaction.save();
-    res.status(201).json(transaction);
-  } catch (err) {
-    res.status(500).json({ message: "Server error" });
+exports.getUserTransactions = async (req, res) => {
+  try {
+    const transactions = await Transaction.find({
+      from: req.params.userId,
+    }).populate("from to", "username");
+    res.status(200).json(transactions);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
