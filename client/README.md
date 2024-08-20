@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# MantaSphere Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![MantaSphere Logo](path/to/your/logo.png)
 
-## Available Scripts
+MantaSphere is a SocialFi platform that enables users to connect, interact, and transact securely on the blockchain. This repository contains the frontend codebase built with React, Tailwind CSS, and Web3.js.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Demo](#demo)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Directory Structure](#directory-structure)
+- [Environment Variables](#environment-variables)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Secure Authentication**: Connect with your wallet and manage your identity securely.
+- **Interactive Dashboard**: Manage your content, governance proposals, and transactions in an intuitive UI.
+- **Marketplace**: Buy and sell NFTs directly from the platform.
+- **Seamless Web3 Integration**: Interact with smart contracts directly from the frontend.
+- **Responsive Design**: Fully responsive design with Tailwind CSS.
 
-### `npm test`
+## Demo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Check out the live demo: [MantaSphere Demo](https://mantasphere.vercel.app)
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js (v16 or higher)
+- npm or Yarn
+- MetaMask or any Web3 wallet
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Steps
 
-### `npm run eject`
+1. Clone the repository:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```bash
+   git clone https://github.com/kunaldhongade/MantaSphere.git
+   cd MantaSphere/client
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Install dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Set up environment variables:
 
-## Learn More
+   - Create a `.env` file in the root directory.
+   - Add the following variables:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```plaintext
+   REACT_APP_INFURA_PROJECT_ID=your-infura-project-id
+   REACT_APP_MARKETPLACE_CONTRACT_ADDRESS=your-marketplace-contract-address
+   REACT_APP_CONTENT_NFT_CONTRACT_ADDRESS=your-content-nft-contract-address
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Start the development server:
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 
-### Code Splitting
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Login**: Connect your wallet to log in.
+- **Dashboard**: Manage your content, create governance proposals, and view your transactions.
+- **Marketplace**: Browse and purchase NFTs.
 
-### Analyzing the Bundle Size
+## Directory Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+MantaSphere/client/
+├── src/
+│   ├── assets/            # Images, icons, and other static assets
+│   ├── components/        # Reusable components (e.g., buttons, forms)
+│   ├── hooks/             # Custom React hooks
+│   ├── pages/             # Page components (e.g., Home, Dashboard, Login)
+│   ├── services/          # API and blockchain interaction services
+│   ├── styles/            # Global styles and Tailwind configuration
+│   ├── App.js             # Main application component
+│   └── index.js           # Entry point of the application
+├── public/                # Static files (e.g., index.html)
+├── .env                   # Environment variables
+├── package.json           # Project dependencies and scripts
+└── README.md              # This README file
+```
 
-### Making a Progressive Web App
+## Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To run this project, you will need to add the following environment variables to your `.env` file:
 
-### Advanced Configuration
+- `REACT_APP_INFURA_PROJECT_ID` - Your Infura project ID.
+- `REACT_APP_MARKETPLACE_CONTRACT_ADDRESS` - The contract address for the marketplace.
+- `REACT_APP_CONTENT_NFT_CONTRACT_ADDRESS` - The contract address for the content NFT.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Contributing
 
-### Deployment
+We welcome contributions to MantaSphere! Please follow these steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Fork the repository.
+2. Create your feature branch: `git checkout -b feature/YourFeature`.
+3. Commit your changes: `git commit -m 'Add some feature'`.
+4. Push to the branch: `git push origin feature/YourFeature`.
+5. Open a pull request.
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any inquiries, please contact:
+
+- \*\*Kunal Dhongade
+- [LinkedIn](https://www.linkedin.com/in/kunaldhongade)
+- [Twitter](https://twitter.com/kunaldhongade)
