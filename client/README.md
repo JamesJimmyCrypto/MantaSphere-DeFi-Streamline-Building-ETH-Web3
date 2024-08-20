@@ -1,6 +1,6 @@
 # MantaSphere Frontend
 
-![MantaSphere Logo](path/to/your/logo.png)
+![MantaSphere Logo](https://pbs.twimg.com/media/GVcJQtfW0AEk6sb?format=png&name=small)
 
 MantaSphere is a SocialFi platform that enables users to connect, interact, and transact securely on the blockchain. This repository contains the frontend codebase built with React, Tailwind CSS, and Web3.js.
 
@@ -122,6 +122,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For any inquiries, please contact:
 
-- \*\*Kunal Dhongade
+- Kunal Dhongade
 - [LinkedIn](https://www.linkedin.com/in/kunaldhongade)
 - [Twitter](https://twitter.com/kunaldhongade)
